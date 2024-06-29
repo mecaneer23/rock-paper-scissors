@@ -69,11 +69,10 @@ class Result:
         \n{self._result}"
 
 
-def run_as_cli() -> Result:
-    """Run one turn of Rock, Paper, Scissors in the terminal"""
-    user_move = input("Rock, Paper, or Scissors? (r, p, s): ")
-    computer_move = choice(["r", "p", "s"])
-    output = Result(_str_to_rps(user_move), _str_to_rps(computer_move))
+def main_logic(user_move: RPS) -> Result:
+    """Run one turn of Rock, Paper, Scissors"""
+    computer_move = _str_to_rps(choice(["r", "p", "s"]))
+    output = Result(user_move, computer_move)
 
     if user_move == computer_move:
         return output.set_result("Tie!")
@@ -85,4 +84,4 @@ def run_as_cli() -> Result:
 
 
 if __name__ == "__main__":
-    print(run_as_cli())
+    print(main_logic(_str_to_rps(input("Rock, Paper, or Scissors? (r, p, s): "))))
