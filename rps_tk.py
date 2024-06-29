@@ -4,14 +4,12 @@ from tkinter import Tk, ttk, StringVar
 import rps_cli
 
 
-
-
 def main():
     def button_handler(button):
         result = rps_cli.main(button)
         string.set(f"User's move: {rps_cli.letter_to_name(result['user_move'])}\n\
         Computer's move: {rps_cli.letter_to_name(result['computer_move'])}")
-        string.set(result['result'])
+        string.set(result["result"])
 
     root = Tk()
     root.title("Rock, Paper, Scissors")
