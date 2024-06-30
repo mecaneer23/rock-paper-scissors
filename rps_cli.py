@@ -67,18 +67,6 @@ class Result:
         self._result = result
         return self
 
-    def get_user_move(self) -> RPS:
-        """Getter for user move"""
-        return self._user_move
-
-    def get_computer_move(self) -> RPS:
-        """Getter for computer move"""
-        return self._computer_move
-
-    def get_result(self) -> str:
-        """Getter for result"""
-        return self._result
-
     def __str__(self) -> str:
         return f"User's move: {self._user_move}\
         \nComputer's move: {self._computer_move}\
