@@ -88,4 +88,8 @@ def main_logic(user_move: RPS) -> Result:
 
 
 if __name__ == "__main__":
-    print(main_logic(str_to_rps(input("Rock, Paper, or Scissors? (r, p, s): "))))
+    while True:
+        move = input("Rock, Paper, or Scissors? (r, p, s), q to quit: ")
+        if move == "q":
+            break
+        print(main_logic(str_to_rps(move)))
