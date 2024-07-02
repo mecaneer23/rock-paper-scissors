@@ -2,15 +2,20 @@
 """Implementation of a rock paper scissors game using Tkinter"""
 
 from functools import partial
-from tkinter import StringVar, Tk, ttk
+from tkinter import Tk, ttk
 
 from rps_cli import main_logic, str_to_rps
 
 
-def button_handler(button: str, string: StringVar, root: Tk) -> None:
+def button_handler(button: str, root: Tk) -> None:
     """Handle a button press"""
-    string.set(str(main_logic(str_to_rps(button))))
-    ttk.Label(root, textvariable=string).grid(row=1, column=0, columnspan=3)
+    for old_label in root.grid_slaves(1, 0):
+        old_label.grid_forget()
+    ttk.Label(root, text=str(main_logic(str_to_rps(button)))).grid(
+        row=1,
+        column=0,
+        columnspan=3,
+    )
 
 
 def main() -> None:
@@ -18,13 +23,11 @@ def main() -> None:
     root = Tk()
     root.title("Rock, Paper, Scissors")
 
-    string = StringVar(root)
-
     for column, name in enumerate(("Rock", "Paper", "Scissors")):
         ttk.Button(
             root,
             text=name,
-            command=partial(button_handler, name, string, root),
+            command=partial(button_handler, name, root),
         ).grid(
             row=0,
             column=column,
