@@ -7,12 +7,13 @@ from tkinter import StringVar, Tk, ttk
 from rps_cli import main_logic, str_to_rps
 
 
-def button_handler(button: str, string: StringVar, root: Tk):
+def button_handler(button: str, string: StringVar, root: Tk) -> None:
     """Handle a button press"""
     string.set(str(main_logic(str_to_rps(button))))
     ttk.Label(root, textvariable=string).grid(row=1, column=0, columnspan=3)
 
-def main():
+
+def main() -> None:
     """Entry point for the rock, paper, scissors tkinter implementation"""
     root = Tk()
     root.title("Rock, Paper, Scissors")
